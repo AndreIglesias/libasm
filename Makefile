@@ -6,11 +6,12 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/09 14:00:44 by ciglesia          #+#    #+#              #
-#    Updated: 2021/04/09 18:49:12 by ciglesia         ###   ########.fr        #
+#    Updated: 2021/04/09 18:58:20 by ciglesia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME		=	libasm.a
+TEST		=	test
 DIRSRC		=	./src/asm/
 DIROBJ		=	./depo/
 INCLUDE		=	./include/
@@ -62,6 +63,7 @@ $(NAME)	:		$(OBJS)
 clean	:
 				@($(RM) $(OBJS))
 				@($(RM) $(DEPS))
+				@($(RM) $(TEST))
 				@$(ECHO) '> Directory cleaned'
 
 all		:		$(NAME)
@@ -73,7 +75,7 @@ fclean	:		clean
 re		:		fclean all
 
 test	:
-				$(CC) $(CFLAGS) -I $(INCLUDE) src/main.c $(NAME)
+				$(CC) $(CFLAGS) -I $(INCLUDE) src/main.c $(NAME) -o $(TEST)
 
 .PHONY	:		all clean re
 
