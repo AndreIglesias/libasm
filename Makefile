@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/09 14:00:44 by ciglesia          #+#    #+#              #
-#    Updated: 2021/04/09 18:58:20 by ciglesia         ###   ########.fr        #
+#    Updated: 2021/04/10 11:52:21 by ciglesia         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,7 +15,7 @@ TEST		=	test
 DIRSRC		=	./src/asm/
 DIROBJ		=	./depo/
 INCLUDE		=	./include/
-SRC			=	ft_strlen.s
+SRC			=	ft_strlen.s ft_strcpy.s
 
 OAUX		=	$(SRC:%=$(DIROBJ)%)
 DEPS		=	$(OAUX:.s=.d)
