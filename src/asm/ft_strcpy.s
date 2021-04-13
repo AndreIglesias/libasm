@@ -6,7 +6,7 @@
 ;    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2021/04/09 19:00:29 by ciglesia          #+#    #+#              ;
-;    Updated: 2021/04/10 12:20:33 by ciglesia         ###   ########.fr        ;
+;    Updated: 2021/04/13 21:30:10 by ciglesia         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -24,23 +24,23 @@ extern M_FT_STRLEN
 
 section .text
 
+ALIGN 16				  ; src & dst addr 16-bytes alignment for opt rep movsb
 M_FT_STRCPY:			  ; char *strcpy(char *dest, const char *src);
-	push	rdi			  ; push dest to stack
-	push	rsi			  ; push src to stack
-	mov		rdi, rsi
+	push	rdi			  ; push dest to stack				rdi = dest
+	push	rsi			  ; push src to stack				rsi = src
+	mov		rdi, rsi	  ; rdi = rsi
 	call	M_FT_STRLEN
 	mov		rbx, rax
 	pop		rsi					; clean stack
 	pop		rdi					; clean stack
 	jmp		ft_memcpy
 
-ALIGN 16
 ft_memcpy:
-	push	rbp
-	mov		rbp, rsp			; rsp stack pointer
-	mov		rax, rdi
-	mov		rcx, rbx			; rbx result of strlen
-	rep		movsb
+	push	rbp					; sets up a stack frame (enter)
+	mov		rbp, rsp			; rsp stack pointer (enter)
+	mov		rax, rdi			; return dest
+	mov		rcx, rbx			; rbx result of strlen -> rcx is the number of bytes to copy
+	rep		movsb				; copies 1 byte from address (R|E)SI src to (R|E)DI dest
 
-	leave
+	leave						; counter part of enter (push rbp & copies rsp -> rbp)
 	ret
