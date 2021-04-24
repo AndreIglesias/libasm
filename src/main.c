@@ -6,7 +6,7 @@
 /*   By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 13:56:43 by ciglesia          #+#    #+#             */
-/*   Updated: 2021/04/25 00:02:21 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/04/25 00:49:28 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int main(int ac, char **av)
 		printf("word: %s (len: %ld)\n", av[1], ft_strlen(av[1]));
 		x = (char*)malloc(sizeof(char) * (ft_strlen(av[1]) + 1));
 		cpy = ft_strcpy(x, av[1]);
-		x[0] = '7';
+		if (ft_strlen(x) > 1)
+			x[0] = '7';
 		printf("word: %s (cpy: %s | %s)\n", av[1], x, cpy);
 		if (ac == 3)
 		{
@@ -58,6 +59,12 @@ int main(int ac, char **av)
 		printf("[return : %d]\n|%s|\n\n", ret, buff1);
 		clear_buffer(buff1, 891);
 		close(fd);
+		x = ft_strdup(av[1]);
+		if (ft_strlen(x) > 3)
+			x[3] = '_';
+		printf("strdup of %s: %s\n", av[1], x);
+
+		free(x);
 	}
 	return (0);
 }
