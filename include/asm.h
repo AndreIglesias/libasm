@@ -6,7 +6,7 @@
 /*   By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 13:54:12 by ciglesia          #+#    #+#             */
-/*   Updated: 2021/04/24 20:45:59 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/04/24 23:58:20 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 size_t	ft_strlen(const char *s);
 char	*ft_strcpy(char *dest, const char *src);
 int		ft_strcmp(const char *s1, const char *s2);
 ssize_t	ft_write(int fd, const void *buf, size_t count);
+ssize_t	ft_read(int fd, void *buf, size_t count);
+
 #endif
