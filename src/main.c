@@ -6,7 +6,7 @@
 /*   By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 13:56:43 by ciglesia          #+#    #+#             */
-/*   Updated: 2021/04/25 00:49:28 by ciglesia         ###   ########.fr       */
+/*   Updated: 2021/04/25 17:04:27 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ int main(int ac, char **av)
 			printf("\texpected: %d\n", strcmp(av[1], av[2]));
 		}
 		ft_write(1, "Write: ", 7);
-		printf(" (%ld - %ld)\n", ft_write(1, av[1], ft_strlen(av[1])), write(1, av[1], ft_strlen(av[1])));
+		printf(" (%ld - %ld)\n", ft_write(1, NULL, ft_strlen(av[1])), write(1, av[1], ft_strlen(av[1])));
 
-		printf("%-20s: \n", "header src/main.c | libc ");
-		fd = open("src/main.c", O_RDONLY);
+		printf("%-20s: \n", "header /src/main.c | libc ");
+		fd = open("/src/main.c", O_RDONLY);
 		ret = read(fd, buff1, 890);
 		buff1[ret] = 0;
 		printf("[return : %d]\n|%s|\n\n", ret, buff1);
 		close(fd);
-		fd = open("src/main.c", O_RDONLY);
+		fd = open("/src/main.c", O_RDONLY);
 		clear_buffer(buff1, 891);
-		printf("%-20s: \n", "header src/main.c | libasm ");
+		printf("%-20s: \n", "header /src/main.c | libasm ");
 		ret = ft_read(fd, buff1, 890);
 		buff1[ret] = 0;
 		printf("[return : %d]\n|%s|\n\n", ret, buff1);
