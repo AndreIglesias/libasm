@@ -11,4 +11,4 @@ https://filippo.io/linux-syscall-table/
 
 tester: https://github.com/cacharle/libasm_test
 
-![](docs/tester.png?raw=true "tester")
+![](tester.png?raw=true "tester")
