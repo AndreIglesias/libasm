@@ -6,7 +6,7 @@
 ;    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2021/04/13 22:01:49 by ciglesia          #+#    #+#              ;
-;    Updated: 2021/04/24 18:46:03 by ciglesia         ###   ########.fr        ;
+;    Updated: 2021/06/15 17:59:52 by ciglesia         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -22,21 +22,19 @@ section .text
 
 M_FT_STRCMP:					; int strcmp(const char *s1, const char *s2);
 	xor		rax, rax
-	xor		rbx, rbx
-	xor		rcx, rcx			; counter rcx = 0
+	xor		r11, r11
+	xor		r10, r10			; counter r10 = 0
 
 .while:
-	mov		al, BYTE [rdi + rcx]
-	mov		bl, BYTE [rsi + rcx]
-	test	al, al								; checks if s1[rcx] is 0
+	mov		al, BYTE [rdi + r10]
+	cmp		al, BYTE [rsi + r10]
+	jne		.end								; if not equal
+	test	al, al								; checks if s1[r10] is 0
 	jz		.end
-	test	bl, bl								; checks if s2[rcx] is 0
-	jz		.end
-	cmp		al, bl				; compare *s1, *s2
-	jne		.end
-	inc		rcx					; rcx++ || alternative would be "inc rdi/rsi"
+	inc		r10					; r10++ || alternative would be "inc rdi/rsi"
 	jmp		.while
 
 .end:
-	sub		rax, rbx
+	mov		r11b, BYTE [rsi + r10]
+	sub		rax, r11
 	ret
